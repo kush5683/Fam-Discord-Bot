@@ -57,7 +57,7 @@ class Basic(commands.Cog):
     async def on_ready(self):
         self.up = time.strftime("%Y-%m-%d %H:%M:%S",
                                 time.localtime(self.processID.create_time()))
-        os.system('cls')
+        os.system('clear')
         print(self.version)
         channel = self.getBotStat()
         await channel.purge(limit=100)

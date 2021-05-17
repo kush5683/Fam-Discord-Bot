@@ -6,7 +6,7 @@ import threading
 version = "Build 4.0"
 
 
-TOKEN = open('token.txt').readline()
+TOKEN = open('../token.txt').readline()
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="!", intents=intents)
