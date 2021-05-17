@@ -25,7 +25,7 @@ async def unload(ctx, extension):
 
 if __name__ == '__main__':
     threads = []
-    for filename in os.listdir("./cogs"):
+    for filename in os.listdir("cogs"):
         if filename.endswith('.py'):
             print(f'loading {filename}')
             t = threading.Thread(
