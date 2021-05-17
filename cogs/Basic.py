@@ -23,15 +23,19 @@ class Basic(commands.Cog):
         )
         embed.add_field(name='!help', value='This message', inline=False)
         embed.add_field(name='!ping', value='Returns Pong!', inline=False)
-        # embed.add_field(name='!roll', value='Takes in [d4, d6, d8, d10, d12, d20, d100] followed by a number <10 [1 if not specified] and returns the value rolled', inline=False)
-        # embed.add_field(name='!roles', value='Returns Your roles', inline=False)
-        # embed.add_field(name='!poop', value='Returns poopy', inline=False)
-        # embed.add_field(name='!unshitmypants',value='Does the thing', inline=False)
+        embed.add_field(
+            name='!roll', value='Takes in [d4, d6, d8, d10, d12, d20, d100] followed by a number <10 [1 if not specified] and returns the value rolled', inline=False)
+        embed.add_field(
+            name='!roles', value='Takes in a or d and returns roles for Siege', inline=False)
+        embed.add_field(name='!poop', value='Returns poopy', inline=False)
+        embed.add_field(name='!unshitmypants',
+                        value='Does the thing', inline=False)
         embed.add_field(
             name='!flip', value='Flips a coin (Heads or Tails)', inline=False)
         embed.add_field(
             name='!clear', value='Takes an integer value as input or 100 if none is supplied, will clear n messages', inline=False)
-        # embed.add_field(name='!statusreport',value='reports status', inline=False)
+        embed.add_field(name='!statusreport',
+                        value='reports status', inline=False)
 
         return embed
 
