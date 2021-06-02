@@ -59,7 +59,7 @@ class DND(commands.Cog):
     @commands.command()
     async def zoom(self,ctx):
         link = 'zoom link'
-        ctx.send(f'{link}')
+        await ctx.send(f'{link}')
 
 
 def setup(client):
