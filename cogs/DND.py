@@ -56,6 +56,11 @@ class DND(commands.Cog):
         else:
             await ctx.send(f' {ctx.author.display_name} rolled {tup[0]} from {numDie} {die} \n{tup[1]}')
 
+    @commands.command()
+    async def zoom(ctx):
+        link = 'zoom link'
+        ctx.send(f'{link}')
+
 
 def setup(client):
     client.add_cog(DND(client))
