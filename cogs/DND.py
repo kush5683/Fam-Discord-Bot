@@ -57,7 +57,7 @@ class DND(commands.Cog):
             await ctx.send(f' {ctx.author.display_name} rolled {tup[0]} from {numDie} {die} \n{tup[1]}')
 
     @commands.command()
-    async def zoom(ctx):
+    async def zoom(self,ctx):
         link = 'zoom link'
         ctx.send(f'{link}')
 
