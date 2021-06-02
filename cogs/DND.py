@@ -58,7 +58,7 @@ class DND(commands.Cog):
 
     @commands.command()
     async def zoom(self,ctx):
-        link = 'zoom link'
+        link = 'https://wpi.zoom.us/j/8394497794'
         await ctx.send(f'{link}')
 
 
