@@ -235,6 +235,8 @@ class TaskCommands(commands.Cog):
                 unit = "minutes"
             elif unit.upper() == "HOUR":
                 unit = "hours"
+            elif unit.upper() == "DAY":
+                unit = "days"
 
             # python 3.10
             # match unit.upper():

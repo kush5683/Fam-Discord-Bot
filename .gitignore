@@ -1,1 +1,9 @@
 /private/*
+.vscode/settings.json
+cogs/__pycache__/Basic.cpython-38.pyc
+cogs/__pycache__/Basic.cpython-39.pyc
+cogs/__pycache__/DND.cpython-39.pyc
+cogs/__pycache__/Siege.cpython-39.pyc
+cogs/__pycache__/Slash.cpython-38.pyc
+cogs/__pycache__/TaskCommands.cpython-39.pyc
+cogs/__pycache__/Basic.cpython-38.pyc
