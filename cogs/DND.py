@@ -57,9 +57,9 @@ class DND(commands.Cog):
             await ctx.send(f' {ctx.author.display_name} rolled {tup[0]} from {numDie} {die} \n{tup[1]}')
 
     @commands.command()
-    async def zoom(ctx):
-        link = 'zoom link'
-        ctx.send(f'{link}')
+    async def zoom(self,ctx):
+        link = 'https://wpi.zoom.us/j/8394497794'
+        await ctx.send(f'{link}')
 
 
 def setup(client):

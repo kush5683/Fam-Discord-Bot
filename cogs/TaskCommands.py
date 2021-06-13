@@ -419,4 +419,4 @@ def setup(client):
 
 
 if __name__ == '__main__':
-    os.system('py main.py')
+    os.system('python3 main.py')
