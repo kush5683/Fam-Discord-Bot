@@ -77,10 +77,9 @@ class Basic(commands.Cog):
         for str in message.content.upper().split():
             text.append(str.translate(
                 str.maketrans('', '', string.punctuation)))
-        for x in text:
-
-            if (x == 'BOT' or x == message.guild.me.display_name.upper()) and (message.author.display_name != message.guild.me.display_name):
-                await message.channel.send(f'I am the {message.guild.me.display_name}!')
+        # for x in text:
+        #     if (x == 'BOT' or x == message.guild.me.display_name.upper()) and (message.author.display_name != message.guild.me.display_name):
+        #         await message.channel.send(f'I am the {message.guild.me.display_name}!')
 
     @commands.command()
     async def ping(self, ctx):
