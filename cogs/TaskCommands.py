@@ -95,13 +95,18 @@ class TaskCommands(commands.Cog):
             return self.__attr
 
         def toJSON(self):
-            with open(f"{self.member.name}.json", "w") as outfile:
+            with open(f"../profiles/{self.member.name}.json", "w") as outfile:
                 json.dump(self.__attr, outfile)
 
         def moveTask(self, taskname):
             pass
 
     def __init__(self, client):
+        self.dir = os.getcwd()
+        os.chdir("..")
+        os.chdir("profiles")
+        self.profileDir = os.getcwd()
+        os.chdir(self.dir)
         self.client = client
         self.tasksGlobal = []
         self.loadTaskThreads()
@@ -130,7 +135,7 @@ class TaskCommands(commands.Cog):
         for member in guild.members:
             if int(member.id) == int(task.authorName):
                 author = member
-
+        os.chdir(self.profileDir)
         with open(f"{author.name}.json", "r+") as file:
             data = json.load(file)
             encoded = f'{task.encoding}'
@@ -148,6 +153,7 @@ class TaskCommands(commands.Cog):
             file.truncate()
             task.changeStatus(TaskCommands.taskStatus.COMPLETE)
             self.tasksGlobal.remove(task)
+            os.chdir(self.dir)
             return
 
     async def completeTask(self, task, message=True):
@@ -266,6 +272,7 @@ class TaskCommands(commands.Cog):
         t = TaskCommands.Task(
             encoded, value, TaskCommands.timeUnit[unit.upper()], name, ctx)
         self.tasksGlobal.append(t)
+        os.chdir(self.profileDir)
         with open(f"{ctx.message.author.name}.json", "r+") as file:
             data = json.load(file)
             encode = f'{value}:'
@@ -279,7 +286,9 @@ class TaskCommands(commands.Cog):
             json.dump(data, file)
             file.truncate()
             await ctx.message.reply(f"A task has been created with name: {name}. You will receive a notification when the time comes.")
+            os.chdir(self.dir)
             self.createLoop(t)
+
 
     def findTask(self, actives, completed, name):
         if name != None:
@@ -297,6 +306,7 @@ class TaskCommands(commands.Cog):
 
     @commands.command()
     async def canceltask(self, ctx, name):
+        os.chdir(self.profileDir)
         filename = f'{ctx.author.name}.json'
         with open(filename, "r+") as file:
             data = json.load(file)
@@ -315,6 +325,7 @@ class TaskCommands(commands.Cog):
             t = dummy.fromName(name)
             await self.completeTask(t, False)
             await ctx.message.reply(f'Task cancelled.')
+            os.chdir(dir)
 
     def buildStatus(self, status):
         if status[1].upper() == "ACTIVE":
@@ -341,6 +352,7 @@ class TaskCommands(commands.Cog):
 
     @commands.command()
     async def taskstatus(self, ctx, name=None, all=False):
+        os.chdir(self.profileDir)
         filename = f'{ctx.author.name}.json'
         with open(filename, "r+") as file:
             data = json.load(file)
@@ -353,6 +365,7 @@ class TaskCommands(commands.Cog):
                 await ctx.send(f'COMPLETED: {[name.split(":")[2] for name in [code for code in complete]]}')
             else:
                 await ctx.send(embed=self.buildStatus(result))
+            os.chdir(self.dir)
 
     @commands.command()
     async def info(self, ctx):
@@ -360,6 +373,7 @@ class TaskCommands(commands.Cog):
             user = ctx.message.mentions[0]
         except IndexError:
             user = ctx.message.author
+        os.chdir(self.profileDir)
         filenames = [entry for entry in os.listdir()
                      if re.search(".json", entry)]
         for filename in filenames:
@@ -390,6 +404,7 @@ class TaskCommands(commands.Cog):
                     embed.add_field(name='Finished jobs',
                                     value=complete_value, inline=False)
                     await ctx.send(embed=embed)
+                    os.chdir(self.dir)
                     return
         await ctx.send(f"{user.nick} not in system")
 
@@ -402,6 +417,7 @@ class TaskCommands(commands.Cog):
 
     def loadTaskThreads(self):
         threads = []
+        os.chdir(self.profileDir)
         filenames = [entry for entry in os.listdir()
                      if re.search(".json", entry)]
         for filename in filenames:
@@ -414,6 +430,7 @@ class TaskCommands(commands.Cog):
             thread.start()
         for thread in threads:
             thread.join()
+        os.chdir(self.dir)
 
 
 def setup(client):
@@ -421,4 +438,4 @@ def setup(client):
 
 
 if __name__ == '__main__':
-    os.system('python3 main.py')
+    os.system('py main.py')
