@@ -289,20 +289,31 @@ class TaskCommands(commands.Cog):
             os.chdir(self.dir)
             self.createLoop(t)
 
-
     def findTask(self, actives, completed, name):
-        if name != None:
-            for task in actives:
-                for attr in task.split(":"):
-                    if re.search(name, attr):
-                        return (attr, "active", task)
+        for task in actives:
+            if re.search(name, task.split(":")[2]):
+                return (name, "active", task)
 
-            for task in completed:
-                for attr in task.split(":"):
-                    if re.search(name, attr):
-                        return (attr, "completed", task)
+        for task in completed:
+            if re.search(name, task.split(":")[2]):
+                return (name, "completed", task)
 
         return (name, "not found")
+
+    @commands.command()
+    async def clearComplete(self, ctx):
+        os.chdir(self.profileDir)
+        filename = f'{ctx.author.name}.json'
+        with open(filename, "r+") as file:
+            data = json.load(file)
+            data["Completed tasks"] = []
+            pprint(data)
+            file.seek(0)
+            file.write('')
+            json.dump(data, file)
+            file.truncate()
+        os.chdir(self.dir)
+        return
 
     @commands.command()
     async def canceltask(self, ctx, name):
@@ -337,10 +348,9 @@ class TaskCommands(commands.Cog):
             title=status[0]
         )
 
-        dummy = TaskCommands.Task(
-            f"1:unit:name:{getTimeStamp()}:authorName:guildID:channelID")
+        dummy = TaskCommands.Task(status[2])
         try:
-            time = dummy.fromName(status[0]).getTime()
+            time = dummy.getTime()
             if time < 0:
                 time = 0
         except:
