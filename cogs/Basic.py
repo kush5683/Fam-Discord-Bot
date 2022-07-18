@@ -81,6 +81,11 @@ class Basic(commands.Cog):
         #     if (x == 'BOT' or x == message.guild.me.display_name.upper()) and (message.author.display_name != message.guild.me.display_name):
         #         await message.channel.send(f'I am the {message.guild.me.display_name}!')
 
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        member.add_roles(777286892386254858)
+        await member.send(f'Welcome to the server {member.mention}')
+
     @commands.command()
     async def ping(self, ctx):
         await ctx.send('Pong!')
