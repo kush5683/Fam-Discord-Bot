@@ -83,7 +83,7 @@ class Basic(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        member.add_roles(777286892386254858)
+        await member.add_roles(777286892386254858)
         await member.send(f'Welcome to the server {member.mention}')
 
     @commands.command()
