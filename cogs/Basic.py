@@ -83,7 +83,8 @@ class Basic(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        await member.add_roles(777286892386254858)
+        role = discord.utils.get(member.guild.roles, name="gamers")
+        await member.add_roles(role)
         await member.send(f'Welcome to the server {member.mention}')
 
     @commands.command()
