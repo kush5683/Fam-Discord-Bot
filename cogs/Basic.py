@@ -46,7 +46,7 @@ class Basic(commands.Cog):
             for channel in guild.text_channels:
                 text_channel_list.append(channel)
         for channel in text_channel_list:
-            if(channel.name == 'bot-status'):
+            if(channel.name == 'bot-status' or channel.name == 'bot-development'):
                 sendTo = channel
         return sendTo
 
