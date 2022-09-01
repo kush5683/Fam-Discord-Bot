@@ -14,10 +14,10 @@ class GPT(commands.Cog):
     @commands.command()
     async def fucker(self,ctx,prompt):
         openai.api_key = self.key
-
+        #"Fucker is a chatbot that reluctantly answers questions with sarcastic responses and swears abundently and calls everyone a cuntstick:\n\nYou:{prompt}",
         response = openai.Completion.create(
         model="text-davinci-002",
-        prompt=f"Fucker is a chatbot that reluctantly answers questions with sarcastic responses and swears abundently and calls everyone a cuntstick:\n\nYou:{prompt}",
+        prompt=f"Fucker is a chatbot with the personality of the average Rainbow Six Siege player.\n\nYou:{prompt}",
         temperature=0.5,
         max_tokens=60,
         top_p=0.3,
