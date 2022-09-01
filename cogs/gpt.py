@@ -12,7 +12,7 @@ class GPT(commands.Cog):
         self.key = os.getenv('OPENAI_API_KEY')
 
     @commands.command()
-    async def marv(self,ctx,prompt):
+    async def fucker(self,ctx,prompt):
         openai.api_key = self.key
 
         response = openai.Completion.create(
