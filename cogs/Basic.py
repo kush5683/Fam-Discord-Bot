@@ -36,7 +36,13 @@ class Basic(commands.Cog):
             name='!clear', value='Takes an integer value as input or 100 if none is supplied, will clear n messages', inline=False)
         embed.add_field(name='!statusreport',
                         value='reports status', inline=False)
-
+        embed.add_field(name='!fucker', value='Returns a response to the input if input contains more than one word plese wrap in quotations', inline=False)
+        embed.add_field(name='!helper', value='Returns a response to the input if input contains more than one word plese wrap in quotations', inline=False)
+        embed.add_field(name='!addtask', value='Adds a task to the task list [value, unit of time (seconds,minutes,hours,days), name of task]', inline=False)
+        embed.add_field(name='!canceltask', value='Cancels a task from the task list [name of task]', inline=False)
+        embed.add_field(name='!taskstatus', value='gets status of given task name', inline=False)
+        embed.add_field(name='!info', value='gets the info of a mentions user, self if no one is mentioned', inline=False)
+        
         return embed
 
     def getBotStat(self):
