@@ -2,11 +2,12 @@ import discord
 from discord.ext import commands
 import os
 import threading
-
+from dotenv import load_dotenv
+load_dotenv()
 version = "Build 4.0"
 
 
-TOKEN = open('token.txt').readline()
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="!", intents=intents)
