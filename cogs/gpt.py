@@ -24,7 +24,7 @@ class GPT(commands.Cog):
         frequency_penalty=0.5,
         presence_penalty=0.0
         )
-        await ctx.send(response['choices'][0]['text'])
+        await ctx.send(f"```{response['choices'][0]['text']}```")
     
     @commands.command()
     async def helper(self,ctx,prompt):
@@ -39,7 +39,7 @@ class GPT(commands.Cog):
         stop=[" Human:", " AI:"]
         )
 
-        await ctx.send(response['choices'][0]['text'])
+        await ctx.send(f"```{response['choices'][0]['text']}```")
 
 def setup(client):
     client.add_cog(GPT(client))
