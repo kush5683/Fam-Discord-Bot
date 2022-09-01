@@ -17,7 +17,7 @@ class GPT(commands.Cog):
 
         response = openai.Completion.create(
         model="text-davinci-002",
-        prompt=f"Marv is a chatbot that reluctantly answers questions with sarcastic responses:\n\nYou:{prompt}",
+        prompt=f"Marv is a chatbot that reluctantly answers questions with sarcastic responses and swears abundently:\n\nYou:{prompt}",
         temperature=0.5,
         max_tokens=60,
         top_p=0.3,
