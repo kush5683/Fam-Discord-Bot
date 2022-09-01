@@ -38,5 +38,8 @@ class GPT(commands.Cog):
         presence_penalty=0.6,
         stop=[" Human:", " AI:"]
         )
-        
+
         await ctx.send(response['choices'][0]['text'])
+
+def setup(client):
+    client.add_cog(GPT(client))
