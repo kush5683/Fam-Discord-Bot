@@ -36,8 +36,9 @@ class Basic(commands.Cog):
             name='!clear', value='Takes an integer value as input or 100 if none is supplied, will clear n messages', inline=False)
         embed.add_field(name='!statusreport',
                         value='reports status', inline=False)
-        embed.add_field(name='!fucker', value='Returns a response to the input if input contains more than one word plese wrap in quotations', inline=False)
-        embed.add_field(name='!helper', value='Returns a response to the input if input contains more than one word plese wrap in quotations', inline=False)
+        embed.add_field(name='!fucker', value='Returns a response to the input used to need quotations if the input was more than one word but no longer needed', inline=False)
+        embed.add_field(name='!helper', value='Returns a response to the input used to need quotations if the input was more than one word but no longer needed', inline=False)
+        embed.add_field(name='!coder', value='input the prompt and coder will code for you! Still in beta learn more [https://beta.openai.com/docs/guides/code/introduction] used to need quotations if the input was more than one word but no longer needed', inline=False)
         embed.add_field(name='!addtask', value='Adds a task to the task list [value, unit of time (seconds,minutes,hours,days), name of task]', inline=False)
         embed.add_field(name='!canceltask', value='Cancels a task from the task list [name of task]', inline=False)
         embed.add_field(name='!taskstatus', value='gets status of given task name', inline=False)
