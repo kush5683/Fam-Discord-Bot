@@ -56,7 +56,7 @@ class GPT(commands.Cog):
         presence_penalty=0
         )
 
-        await ctx.send(f"```{response['choices'][0]['text']}```")
+        await ctx.send(f"{response['choices'][0]['text']}")
 
 def setup(client):
     client.add_cog(GPT(client))
