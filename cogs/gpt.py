@@ -12,12 +12,15 @@ class GPT(commands.Cog):
         self.key = os.getenv('OPENAI_API_KEY')
 
     @commands.command()
-    async def fucker(self,ctx,prompt):
+    async def fucker(self,ctx,*prompt):
+        stiched_prompt = ""
+        for p in prompt:
+            stiched_prompt += f"{p} "
         openai.api_key = self.key
         #"Fucker is a chatbot that reluctantly answers questions with sarcastic responses and swears abundently and calls everyone a cuntstick:\n\nYou:{prompt}",
         response = openai.Completion.create(
         model="text-davinci-003",
-        prompt=f"Fucker is a highly intelligent chat but but with a very vulgar attitude.\n\nYou:{prompt}",
+        prompt=f"Fucker is a highly intelligent chat but but with a very vulgar attitude.\n\nYou:{stiched_prompt}",
         temperature=0.5,
         max_tokens=60,
         top_p=0.3,
@@ -27,10 +30,13 @@ class GPT(commands.Cog):
         await ctx.send(f"```{response['choices'][0]['text']}```")
     
     @commands.command()
-    async def helper(self,ctx,prompt):
+    async def helper(self,ctx,*prompt):
+        stiched_prompt = ""
+        for p in prompt:
+            stiched_prompt += f"{p} "
         response = openai.Completion.create(
         model="text-davinci-003",
-        prompt= f"Human:{prompt}",
+        prompt= f"Human:{stiched_prompt}",
         temperature=0.9,
         max_tokens=300,
         top_p=1,
