@@ -16,8 +16,8 @@ class GPT(commands.Cog):
         openai.api_key = self.key
         #"Fucker is a chatbot that reluctantly answers questions with sarcastic responses and swears abundently and calls everyone a cuntstick:\n\nYou:{prompt}",
         response = openai.Completion.create(
-        model="text-davinci-002",
-        prompt=f"Fucker is a chatbot with the personality of the average Rainbow Six Siege player.\n\nYou:{prompt}",
+        model="text-davinci-003",
+        prompt=f"Fucker is a highly intelligent chat but but with a very vulgar attitude.\n\nYou:{prompt}",
         temperature=0.5,
         max_tokens=60,
         top_p=0.3,
@@ -29,7 +29,7 @@ class GPT(commands.Cog):
     @commands.command()
     async def helper(self,ctx,prompt):
         response = openai.Completion.create(
-        model="text-davinci-002",
+        model="text-davinci-003",
         prompt= f"Human:{prompt}",
         temperature=0.9,
         max_tokens=300,
@@ -37,6 +37,23 @@ class GPT(commands.Cog):
         frequency_penalty=0.0,
         presence_penalty=0.6,
         stop=[" Human:", " AI:"]
+        )
+
+        await ctx.send(f"```{response['choices'][0]['text']}```")
+
+    @commands.command()
+    async def coder(self, ctx, *prompt):
+        stiched_prompt = ""
+        for p in prompt:
+            stiched_prompt += f"{p} "
+        response = openai.Completion.create(
+        model="code-davinci-002",
+        prompt=stiched_prompt,
+        temperature=0,
+        max_tokens=256,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
         )
 
         await ctx.send(f"```{response['choices'][0]['text']}```")
