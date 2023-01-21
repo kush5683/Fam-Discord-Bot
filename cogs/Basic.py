@@ -6,7 +6,7 @@ import time
 import psutil
 import datetime
 import string
-
+from chatgpt import Chatbot
 
 class Basic(commands.Cog):
 
@@ -14,6 +14,7 @@ class Basic(commands.Cog):
         self.client = client
         self.version = '4.0'
         self.processID = psutil.Process(os.getpid())
+        self.chatbot = Chatbot()
         print("Basic commands loaded")
 
     def helpEmbed(self):
@@ -80,13 +81,16 @@ class Basic(commands.Cog):
     async def on_message(self, message):
         print(
             f"{message.channel}: {message.author}: {message.author.name}: {message.content}")
-        text = []
-        for str in message.content.upper().split():
-            text.append(str.translate(
-                str.maketrans('', '', string.punctuation)))
-        # for x in text:
-        #     if (x == 'BOT' or x == message.guild.me.display_name.upper()) and (message.author.display_name != message.guild.me.display_name):
-        #         await message.channel.send(f'I am the {message.guild.me.display_name}!')
+        
+        if message.channel.id == 1066377177853083721 and message.author.id != 700732725509750825:
+            print(message.author.id)
+            await message.channel.send(f"```{self.chatgpt(message.content)}```")
+
+        
+    
+    def chatgpt(self, prompt):
+        return self.chatbot.send(prompt)
+
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
