@@ -5,7 +5,6 @@ class Chatbot:
         self.model = model
         self.messages = [
         {"role": "system", "content":"You are a helpful assistant. You take on any behavior asked of you"},
-        {"role": "user", "content": f"{prompt}"}
         ]
     
     def send(self, message):
