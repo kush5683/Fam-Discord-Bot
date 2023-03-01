@@ -8,7 +8,7 @@ class Chatbot:
         ]
     
     def send(self, message):
-        messages.append({"role": "user", "content": f"{message}"})
+        self.messages.append({"role": "user", "content": f"{message}"})
         response = openai.ChatCompletion.create(
             model=model,
             messages=messages
