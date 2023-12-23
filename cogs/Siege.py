@@ -30,8 +30,9 @@ class Siege(commands.Cog):
         await ctx.send(order)
 
 
-def setup(client):
-    client.add_cog(Siege(client))
+async def setup(client):
+    await client.add_cog(Siege(client))
+
 
 
 if __name__ == '__main__':

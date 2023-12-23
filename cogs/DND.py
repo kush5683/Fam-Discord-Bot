@@ -62,8 +62,8 @@ class DND(commands.Cog):
         await ctx.send(f'{link}')
 
 
-def setup(client):
-    client.add_cog(DND(client))
+async def setup(client):
+    await client.add_cog(DND(client))
 
 
 if __name__ == '__main__':

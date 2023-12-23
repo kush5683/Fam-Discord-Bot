@@ -443,8 +443,8 @@ class TaskCommands(commands.Cog):
         os.chdir(self.dir)
 
 
-def setup(client):
-    client.add_cog(TaskCommands(client))
+async def setup(client):
+    await client.add_cog(TaskCommands(client))
 
 
 if __name__ == '__main__':

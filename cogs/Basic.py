@@ -6,7 +6,6 @@ import time
 import psutil
 import datetime
 import string
-from chatgpt import Chatbot
 
 class Basic(commands.Cog):
 
@@ -14,7 +13,6 @@ class Basic(commands.Cog):
         self.client = client
         self.version = '4.0'
         self.processID = psutil.Process(os.getpid())
-        self.chatbot = Chatbot()
         print("Basic commands loaded")
 
     def helpEmbed(self):
@@ -35,15 +33,7 @@ class Basic(commands.Cog):
             name='!flip', value='Flips a coin (Heads or Tails)', inline=False)
         embed.add_field(
             name='!clear', value='Takes an integer value as input or 100 if none is supplied, will clear n messages', inline=False)
-        embed.add_field(name='!statusreport',
-                        value='reports status', inline=False)
-        embed.add_field(name='!fucker', value='Returns a response to the input used to need quotations if the input was more than one word but no longer needed', inline=False)
-        embed.add_field(name='!helper', value='Returns a response to the input used to need quotations if the input was more than one word but no longer needed', inline=False)
-        embed.add_field(name='!coder', value='input the prompt and coder will code for you! Still in beta learn more [https://beta.openai.com/docs/guides/code/introduction] used to need quotations if the input was more than one word but no longer needed', inline=False)
-        embed.add_field(name='!addtask', value='Adds a task to the task list [value, unit of time (seconds,minutes,hours,days), name of task]', inline=False)
-        embed.add_field(name='!canceltask', value='Cancels a task from the task list [name of task]', inline=False)
-        embed.add_field(name='!taskstatus', value='gets status of given task name', inline=False)
-        embed.add_field(name='!info', value='gets the info of a mentions user, self if no one is mentioned', inline=False)
+        embed.add_field(name='!roles', value='Takes in a or d and returns roles for Siege', inline=False)
         
         return embed
 
@@ -174,8 +164,8 @@ class Basic(commands.Cog):
         await ctx.send(file=discord.File('assets/poopPants.jpg'))
 
 
-def setup(client):
-    client.add_cog(Basic(client))
+async def setup(client):
+    await client.add_cog(Basic(client))
 
 
 if __name__ == '__main__':
