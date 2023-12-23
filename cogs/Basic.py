@@ -118,6 +118,8 @@ class Basic(commands.Cog):
     async def clear(self, ctx, amount=100):
         admin = self.checkRole(ctx, 'Admin')
         if admin:
+            if ctx.channel.name == "clips":
+                return
             await ctx.channel.purge(limit=amount)
             await ctx.send(f'Cleared by {ctx.author.display_name}')
         else:

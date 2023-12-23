@@ -8,3 +8,5 @@ cogs/__pycache__/Slash.cpython-38.pyc
 cogs/__pycache__/TaskCommands.cpython-39.pyc
 cogs/__pycache__/Basic.cpython-38.pyc
 .env
+nohup.out
+cogs/__pycache__/Basic.cpython-311.pyc
