@@ -32,7 +32,7 @@ class Siege(commands.Cog):
         await ctx.send(order)
 
     @commands.command()
-    async def strat(self, ctx, team=None, current_map=None):
+    async def strat(self, ctx, team=None, current_map=None, *notes):
         """
         Use openai to generate strats
         """
@@ -60,9 +60,13 @@ class Siege(commands.Cog):
         openai_api_key = os.getenv('OPEN_KEY')
         self.model = OpenAI(api_key=openai_api_key)
         messages = self.messages
+        if notes:
+            notes = ' '.join(notes)
+        else:
+            notes = "none"
         messages.append({
             "role": "user",
-            "content": f"We are playing {team} on {current_map} - please suggest a strategy for the bomb gamemode. We want the strategy to be fun and unconventional, but not so ridiculous that we will lose immidiatly - we want to maintain a competitive edge."
+            "content": f"We are playing {team} on {current_map} - please suggest a strategy for the bomb gamemode. We want the strategy to be fun and unconventional, but not so ridiculous that we will lose immidiatly - we want to maintain a competitive edge. Here are some notes to help you: {notes}"
         })
         if team[0] == 'a':
             team = "attacker"
@@ -72,7 +76,6 @@ class Siege(commands.Cog):
         response = self.model.chat.completions.create(
             model="gpt-4-1106-preview",
             messages=messages,
-            max_tokens=1500,
         )
         content = response.choices[0].message.content
         while len(content) > 0:
