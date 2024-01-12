@@ -66,13 +66,13 @@ class Siege(commands.Cog):
             notes = "none"
         messages.append({
             "role": "user",
-            "content": f"We are playing {team} on {current_map} - please suggest a strategy for the bomb gamemode. We want the strategy to be fun and unconventional, but not so ridiculous that we will lose immidiatly - we want to maintain a competitive edge. Here are some notes to help you: {notes}"
+            "content": f"We are playing {team} on {current_map}  {notes} - We want the strategy to be fun and unconventional, but not so ridiculous that we will lose immidiatly - we want to maintain a somewhatcompetitive edge. "
         })
         if team[0] == 'a':
             team = "attacker"
         else:
             team = "defender"
-        await ctx.send(f"Generating {team} strategy for {current_map}...")
+        await ctx.send(f"Generating {team} strategy for {current_map} {notes}...")
         response = self.model.chat.completions.create(
             model="gpt-4-1106-preview",
             messages=messages,
